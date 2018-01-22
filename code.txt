@@ -1,0 +1,2085 @@
+package prabandh;
+
+import javax.swing.*;
+
+/*import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+*/
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+import java.sql.ResultSet;
+import com.mysql.jdbc.Statement;
+
+import java.awt.event.*;
+import java.awt.*;
+import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.Vector;
+
+public class Workshop
+{
+   public static JFrame f,f1, f2,f3,f4,f5,f6,f7,f8,f9,f10;
+   public static int flag=0,flag1=0,ddmmyyyy=0;
+   public static JTextField jt,jt1,jt2,jt3,jt4,jt8,jt9,jt5,jt12,jt13,jt14,jt15,jt16,jt17,jt18,jt19,jt20,jt21,jt22,jt23,jt24,jt25,jt26,jt27,jt28,jt29,jt30,jt31,jt32,jt33,jt34,jt35,jt36,jt37;
+   public static JPasswordField jp;
+ 
+  // public static JTabbedPane tb;
+   public static JMenuItem mi;
+   public static JComboBox jcb2, jcb, jcb1,jcb3,jcb4,jcb5,jcb6,jcb7,jcb8,jcb9,jcb10,jcb11,jcb12,jcb13;
+  public static void main(String[] args)
+  {
+    f = new JFrame("Workshop Managment System");
+    f.setSize(1920,1080);
+    f.setLayout(null);
+ 
+    f1= new JFrame("Welcome");
+    f1.setSize(1920,1080);
+    f1.setLayout(null);
+ 
+    f2= new JFrame ("Existing");
+    f2.setSize(450,590);
+    f2.setLayout(null);
+ 
+    f3= new JFrame("AddNew");
+    f3.setSize(450,590);
+    f3.setLayout(null);
+ 
+    f4= new JFrame("Issue");
+    f4.setSize(600, 600);
+    f4.setLayout(null);
+ 
+    f5= new JFrame("Submit");
+    f5.setSize(600, 600);
+    f5.setLayout(null);
+ 
+    f6= new JFrame("Model and Refrence Number");
+    f6.setLayout(null);
+    f6.setSize(375,205);
+ 
+    f7= new JFrame("Add Model No. and Refrence No.");
+    f7.setLayout(null);
+    f7.setSize(400,400);
+ 
+    f8= new JFrame("Model and Refrence Number");
+    f8.setLayout(null);
+    f8.setSize(375,205);
+ 
+    f9= new JFrame("Model and Refrence Number");
+    f9.setLayout(null);
+    f9.setSize(375,205);
+ 
+    f10= new JFrame("Add a new Category");
+    f10.setLayout(null);
+    f10.setSize(400,230);
+ 
+    jt = new JTextField("User ID");
+    jt.setBounds(560,350,200,40);
+    jt.setForeground(Color.gray);
+    f.add(jt);
+    UserHandler ramu1= new UserHandler();
+    jt.addKeyListener(ramu1);
+ 
+    jt1 = new JTextField();
+    jt1.setBounds(160,40,200,30);
+    jt1.setForeground(Color.gray);
+    f3.add(jt1);
+
+    jt2 = new JTextField("DD/MM/YYYY");
+    jt2.setBounds(160,220,200,30);
+    jt2.setForeground(Color.gray);
+    f3.add(jt2);
+    DateHandler ramu= new DateHandler();
+    jt2.addKeyListener(ramu);
+
+    jt3 = new JTextField();
+    jt3.setBounds(160,130,200,30);
+    jt3.setForeground(Color.gray);
+    f3.add(jt3);
+ 
+    jt4= new JTextField();
+    jt4.setBounds(160,220,200,30);
+    jt4.setForeground(Color.gray);
+    f2.add(jt4);
+
+    jt5= new JTextField();
+    jt5.setBounds(160,130,200,30);
+    jt5.setForeground(Color.gray);
+    f2.add(jt5);
+
+    jt8 = new JTextField();
+    jt8.setBounds(160,355,200,30);
+    f3.add(jt8);
+ 
+    jt9 = new JTextField();
+    jt9.setBounds(160,355,200,30);
+    f2.add(jt9);
+ 
+    /* JTextField jt10 = new JTextField();
+    jt10.setBounds(160,130,200,30);
+    f4.add(jt10);
+   */
+    jt12 = new JTextField();
+    jt12.setBounds(200,220,200,30);
+    f4.add(jt12);
+  
+    jt13 = new JTextField();
+    jt13.setBounds(200,260,200,30);
+    f4.add(jt13);
+ 
+    jt14 = new JTextField();
+    jt14.setBounds(200,300,200,30);
+    f4.add(jt14);
+ 
+    jt15 = new JTextField();
+    jt15.setBounds(200,340,200,30);
+    f4.add(jt15);
+ 
+    jt16 = new JTextField();
+    jt16.setBounds(200,380,200,30);
+    f4.add(jt16);
+ 
+    jt17= new JTextField();
+    jt17.setBounds(200,420,200,30);
+    f4.add(jt17);
+ 
+    jt22 = new JTextField();
+    jt22.setBounds(130, 20, 200, 30);
+    f6.add(jt22);
+ 
+    jt23 = new JTextField();
+    jt23.setBounds(130, 65, 200, 30);
+    f6.add(jt23);
+ 
+    jt20 = new JTextField();
+    jt20.setBounds(160,175,200,30);
+    f3.add(jt20);
+ 
+    jt21 = new JTextField();
+    jt21.setBounds(160,310,200,30);
+    f2.add(jt21);
+ 
+    jt24 = new JTextField();
+    jt24.setBounds(160, 265, 200, 30);
+    f3.add(jt24);
+ 
+    jt25 = new JTextField();
+    jt25.setBounds(160, 175, 200, 30);
+    f2.add(jt25);
+ 
+    jt26 = new JTextField();
+    jt26.setBounds(160, 310, 200, 30);
+    f3.add(jt26);
+
+    jt27 = new JTextField();
+    jt27.setBounds(160, 265, 200, 30);
+    f2.add(jt27);
+ 
+    jt28 = new JTextField();
+    jt28.setBounds(130, 20, 200, 30);
+    f8.add(jt28);
+ 
+    jt29 = new JTextField();
+    jt29.setBounds(130, 65, 200, 30);
+    f8.add(jt29);
+ 
+    jt30 = new JTextField();
+    jt30.setBounds(130, 20, 200, 30);
+    f9.add(jt30);
+ 
+    jt31 = new JTextField();
+    jt31.setBounds(130, 65, 200, 30);
+    f9.add(jt31);
+ 
+    jt19 = new JTextField();
+    jt19.setBounds(160,40,200,30);
+    f10.add(jt19);
+  
+    jt32 = new JTextField();
+    jt32.setBounds(200,220,200,30);
+    f5.add(jt32);
+ 
+    jt33 = new JTextField();
+    jt33.setBounds(200,260,200,30);
+    f5.add(jt33);
+ 
+    jt34 = new JTextField();
+    jt34.setBounds(200,300,200,30);
+    f5.add(jt34);
+ 
+    jt35 = new JTextField();
+    jt35.setBounds(200,340,200,30);
+    f5.add(jt35);
+ 
+    jt36 = new JTextField();
+    jt36.setBounds(200,380,200,30);
+    f5.add(jt36);
+ 
+    jt37= new JTextField();
+    jt37.setBounds(200,420,200,30);
+    f5.add(jt37);
+ 
+    jp = new JPasswordField("Password");
+    jp.setBounds(560,400,200,40);
+    jp.setForeground(Color.gray);
+    PassHandler ramu2= new PassHandler();
+    jp.addKeyListener(ramu2);
+ 
+    f.add(jp);
+ 
+    JButton b= new JButton("Login");
+    b.setBounds(610,450,100,40);
+    LoginHandler ram = new LoginHandler();
+    b.addActionListener(ram);
+    f.add(b);
+ 
+    JButton b1= new JButton("Save");
+    b1.setBounds(70,480,100,30);
+    f3.add(b1);
+    SaveHandler sh= new SaveHandler();
+    b1.addActionListener(sh);
+ 
+    JButton b2= new JButton("Cancel");
+    b2.setBounds(250,480,100,30);
+    f3.add(b2);
+    CancelHandler ch= new CancelHandler();
+    b2.addActionListener(ch);
+ 
+    JButton b3= new JButton("Save ");
+    b3.setBounds(70,480,100,30);
+    f2.add(b3);
+    Save1Handler sh1 = new Save1Handler();
+    b3.addActionListener(sh1);
+ 
+    JButton b4= new JButton("Cancel ");
+    b4.setBounds(250,480,100,30);
+    f2.add(b4);
+    Cancel1Handler ch1= new Cancel1Handler();
+    b4.addActionListener(ch1);
+
+    JButton b5= new JButton("Issue");
+    b5.setBounds(40,490,100,30);
+    f4.add(b5);
+    IssueHandler imh1 = new IssueHandler();
+    b5.addActionListener(imh1);
+ 
+    JButton b6= new JButton("Cancel");
+    b6.setBounds(410,490,100,30);
+    f4.add(b6);
+    issuecancel ic =new issuecancel();
+    b6.addActionListener(ic);
+ 
+    JButton b7= new JButton("Add Reference and Serial No.");
+    b7.setBounds(110,425,200,20);
+    f3.add(b7);
+    modelbutton mh11 = new modelbutton();
+    b7.addActionListener(mh11);
+ 
+    JButton b8= new JButton("Finish");
+    b8.setBounds(20,120,100,30);
+    f6.add(b8);
+    modelbutton2 mb2 = new modelbutton2();
+    b8.addActionListener(mb2);
+ 
+    JButton b9= new JButton("Add");
+    b9.setBounds(240,120,100,30);
+    f6.add(b9);
+    modelbutton1 mb1 = new modelbutton1();
+    b9.addActionListener(mb1);
+ 
+    JButton b10 = new JButton("Save");
+    b10.setBounds(50,300,100,30);
+    f7.add(b10);
+ 
+    JButton b11 = new JButton("Cancel  ");
+    b11.setBounds(220,300,100,30);
+    f7.add(b11);
+    f7cancel f71 =new f7cancel();
+    b11.addActionListener(f71);
+ 
+    JButton b12= new JButton("Add Reference and Serial Number");
+    b12.setBounds(110,425,200,20);
+    f2.add(b12);
+    modelbutton3 mh12 = new modelbutton3();
+    b12.addActionListener(mh12);
+ 
+    JButton b13= new JButton("Finish");
+    b13.setBounds(20,120,100,30);
+    f8.add(b13);
+    modelbutton4 mb= new modelbutton4();
+    b13.addActionListener(mb);
+ 
+    JButton b14= new JButton("Add");
+    b14.setBounds(240,120,100,30);
+    f8.add(b14);
+    modelbutton5 but =new modelbutton5();
+    b14.addActionListener(but);
+ 
+    JButton b15= new JButton("Add Reference and Serial Number");
+    b15.setBounds(90,245,200,20);
+    f7.add(b15);
+    modelbutton6 mcb6 =new modelbutton6();
+    b15.addActionListener(mcb6);
+ 
+    JButton b16= new JButton("Finish");
+    b16.setBounds(20,120,100,30);
+    f9.add(b16);
+    modelbutton8 mcb8 =new modelbutton8();
+    b16.addActionListener(mcb8);
+ 
+    JButton b17= new JButton("Add");
+    b17.setBounds(240,120,100,30);
+    f9.add(b17);
+    modelbutton7 mcb7 = new modelbutton7();
+    b17.addActionListener(mcb7);
+ 
+    JButton b18= new JButton("+");
+    b18.setBounds(375,85,45,30);
+    f3.add(b18);
+    modelbutton9 mcb9 = new modelbutton9();
+    b18.addActionListener(mcb9);
+ 
+    JButton b19= new JButton("Add");
+    b19.setBounds(75,90,250,30);
+    f10.add(b19);
+    modelbutton10 mcb10 = new modelbutton10();
+    b19.addActionListener(mcb10);
+ 
+    JButton b20= new JButton("Finish");
+    b20.setBounds(75,140,250,30);
+    f10.add(b20);
+    modelbutton11 mcb11 = new modelbutton11();
+    b20.addActionListener(mcb11);
+ 
+    JButton b21= new JButton("Issue More");
+    b21.setBounds(225,490,100,30);
+    f4.add(b21);
+    issuemorehandler imh = new issuemorehandler();
+    b21.addActionListener(imh);
+  
+    JButton b22= new JButton("Submit");
+    b22.setBounds(40,490,100,30);
+    f5.add(b22);
+    SubmitHandler imhab = new SubmitHandler();
+    b22.addActionListener(imhab);
+ 
+    JButton b23= new JButton("Cancel ");
+    b23.setBounds(410,490,100,30);
+    f5.add(b23);
+    cancelsubHandler imhabc = new cancelsubHandler();
+    b23.addActionListener(imhabc);
+  
+    JMenuBar menubar= new JMenuBar();
+    menubar.setSize(1920,20);
+    menubar.setLocation(0,0);
+ 
+    JMenu menu= new JMenu("         Items       ");
+    JMenu menu1= new JMenu("      Purchase      ");
+    JMenu menu2= new JMenu("        Reports     ");
+    JMenu menu3= new JMenu("       Item Trans.      ");
+ 
+    JMenuItem mi2= new JMenuItem("Issue");
+    JMenuItem mi3= new JMenuItem("Submit");
+    menu3.add(mi2);
+    menu3.add(mi3);
+ 
+    menubar.add(menu);
+    menubar.add(menu1);
+    menubar.add(menu2);
+    menubar.add(menu3);
+ 
+    JMenuItem mi= new JMenuItem("Existing");
+    JMenuItem mi1= new JMenuItem("Add New");
+    JMenuItem mi11 = new JMenuItem("Model/Reference");
+    MHandler mh = new MHandler();
+    mi11.addActionListener(mh);
+    PowerHandler ph= new PowerHandler();
+    mi.addActionListener(ph);
+    PowerHandler1 ph1= new PowerHandler1();
+    mi1.addActionListener(ph1);
+    menu1.add(mi1);
+    menu1.add(mi);
+    menu1.add(mi11);
+    PowerHandler2 ph2= new PowerHandler2();
+    mi2.addActionListener(ph2);
+    PowerHandler3 ph3= new PowerHandler3();
+    mi3.addActionListener(ph3);
+ 
+    JLabel l= new JLabel("Name of Item*");
+    l.setBounds(40,40,150,30);
+    l.setForeground(Color.red);
+    f3.add(l);
+ 
+    JLabel l1= new JLabel("P.O*");
+    l1.setBounds(40,175,150,30);
+    l1.setForeground(Color.red);
+    f3.add(l1);
+
+    JLabel l2= new JLabel("Quantity*");
+    l2.setBounds(40,130,150,30);
+    l2.setForeground(Color.red);
+    f3.add(l2);
+ 
+    JLabel l3= new JLabel("Category*");
+    l3.setBounds(40,85,150,30);
+    l3.setForeground(Color.red);
+    f3.add(l3);
+ 
+    JLabel l4= new JLabel("Category*");
+    l4.setBounds(40,40,150,30);
+    l4.setForeground(Color.red);
+    f2.add(l4);
+ 
+    JLabel l5= new JLabel("Name of Item*");
+    l5.setBounds(40,85,150,30);
+    l5.setForeground(Color.red);
+    f2.add(l5);
+
+    JLabel l6= new JLabel("P.O.*");
+    l6.setBounds(40,175,150,30);
+    l6.setForeground(Color.red);
+    f2.add(l6);
+
+    JLabel l7= new JLabel("Quantity*");
+    l7.setBounds(40,130,150,30);
+    l7.setForeground(Color.red);
+    f2.add(l7);
+ 
+    JLabel l10= new JLabel("  Item Section"  );
+    l10.setBounds(240,25,200,20);
+    l10.setForeground(Color.red);
+    f4.add(l10);
+ 
+    JLabel l11= new JLabel("Category");
+    l11.setBounds(80,50,200,30);
+    l11.setForeground(Color.blue);
+    f4.add(l11);
+ 
+    JLabel l12= new JLabel("Name of Item");
+    l12.setBounds(80,90,200,30);
+    l12.setForeground(Color.blue);
+    f4.add(l12);
+ 
+    JLabel l13= new JLabel("Select Ref. No");
+    l13.setBounds(80,130,200,30);
+    l13.setForeground(Color.blue);
+    f4.add(l13);
+ 
+    JLabel l14= new JLabel("  Student Section  ");
+    l14.setBounds(240,180,200,30);
+    l14.setForeground(Color.red);
+    f4.add(l14);
+ 
+    JLabel l15= new JLabel("Name ");
+    l15.setBounds(80,220,200,30);
+    l15.setForeground(Color.blue);
+    f4.add(l15);
+ 
+    JLabel l16= new JLabel("Roll No.");
+    l16.setBounds(80,260,200,30);
+    l16.setForeground(Color.blue);
+    f4.add(l16);
+ 
+    JLabel l17= new JLabel("Email-Id");
+    l17.setBounds(80,300,200,30);
+    l17.setForeground(Color.blue);
+    f4.add(l17);
+ 
+    JLabel l18= new JLabel("Mobile No.");
+    l18.setBounds(80,340,200,30);
+    l18.setForeground(Color.blue);
+    f4.add(l18);
+ 
+    JLabel l19= new JLabel("Date of Issue");
+    l19.setBounds(80,380,200,30);
+    l19.setForeground(Color.blue);
+    f4.add(l19);
+ 
+    JLabel l20 =new JLabel("Purpose");
+    l20.setBounds(80,420,200,30);
+    l20.setForeground(Color.blue);
+    f4.add(l20);
+ 
+    JLabel l21= new JLabel("Refrence No.");
+    l21.setForeground(Color.red);
+    l21.setBounds(20,65,100,20);
+    f6.add(l21);
+ 
+    JLabel l22= new JLabel("Serial No.");
+    l22.setForeground(Color.red);
+    l22.setBounds(20,20,100,20);
+    f6.add(l22);
+ 
+    JLabel l23 =new JLabel("Category");
+    l23.setForeground(Color.red);
+    l23.setBounds(30,40,150,30);
+    f7.add(l23);
+ 
+    JLabel l24 =new JLabel("Name Of Item");
+    l24.setForeground(Color.red);
+    l24.setBounds(30,90,150,30);
+    f7.add(l24);
+ 
+    JLabel l25 =new JLabel("Model Number");
+    l25.setForeground(Color.red);
+    l25.setBounds(30,140,150,30);
+    f7.add(l25);
+ 
+    JLabel l26 =new JLabel("Company Name");
+    l26.setForeground(Color.red);
+    l26.setBounds(30,190,150,30);
+    f7.add(l26);
+ 
+    JLabel l27= new JLabel("P.O. Date*");
+    l27.setBounds(40,220,150,30);
+    l27.setForeground(Color.red);
+    f3.add(l27);
+ 
+    JLabel l28= new JLabel("P.O. Date*");
+    l28.setBounds(40,220,150,30);
+    l28.setForeground(Color.red);
+    f2.add(l28);
+ 
+    JLabel l29= new JLabel("Model No.*");
+    l29.setBounds(40,265,150,30);
+    l29.setForeground(Color.red);
+    f3.add(l29);
+ 
+    JLabel l30= new JLabel("Model No.*");
+    l30.setBounds(40,265,150,30);
+    l30.setForeground(Color.red);
+    f2.add(l30);
+ 
+    JLabel l31= new JLabel("Refrence No.");
+    l31.setForeground(Color.red);
+    l31.setBounds(20,65,100,20);
+    f8.add(l31);
+ 
+    JLabel l32= new JLabel("Serial No.");
+    l32.setForeground(Color.red);
+    l32.setBounds(20,20,100,20);
+    f8.add(l32);
+ 
+    JLabel l33= new JLabel("Refrence No.");
+    l33.setForeground(Color.red);
+    l33.setBounds(20,65,100,20);
+    f9.add(l33);
+ 
+    JLabel l34= new JLabel("Serial No.");
+    l34.setForeground(Color.red);
+    l34.setBounds(20,20,100,20);
+    f9.add(l34);
+ 
+    JLabel l35= new JLabel("Name of Category");
+    l35.setForeground(Color.red);
+    l35.setBounds(20,40,200,30);
+    f10.add(l35);
+ 
+    JLabel l36= new JLabel("Company*");
+    l36.setForeground(Color.red);
+    l36.setBounds(40,310,200,30);
+    f3.add(l36);
+ 
+    JLabel l37= new JLabel("Price");
+    l37.setForeground(Color.red);
+    l37.setBounds(40,355,200,30);
+    f3.add(l37);
+ 
+    JLabel l38= new JLabel("Company*");
+    l38.setForeground(Color.red);
+    l38.setBounds(40,310,200,30);
+    f2.add(l38);
+ 
+    JLabel l39= new JLabel("Price");
+    l39.setForeground(Color.red);
+    l39.setBounds(40,355,200,30);
+    f2.add(l39);
+  
+    JLabel l40= new JLabel("  Item Section"  );
+    l40.setBounds(240,25,200,20);
+    l40.setForeground(Color.red);
+    f5.add(l40);
+ 
+    JLabel l41= new JLabel("Category");
+    l41.setBounds(80,50,200,30);
+    l41.setForeground(Color.blue);
+    f5.add(l41);
+ 
+    JLabel l42= new JLabel("Name of Item");
+    l42.setBounds(80,90,200,30);
+    l42.setForeground(Color.blue);
+    f5.add(l42);
+ 
+    JLabel l43= new JLabel("Select Ref. No");
+    l43.setBounds(80,130,200,30);
+    l43.setForeground(Color.blue);
+    f5.add(l43);
+ 
+    JLabel l44= new JLabel("  Student Section  ");
+    l44.setBounds(240,180,200,30);
+    l44.setForeground(Color.red);
+    f5.add(l44);
+ 
+    JLabel l45= new JLabel("Name ");
+    l45.setBounds(80,220,200,30);
+    l45.setForeground(Color.blue);
+    f5.add(l45);
+ 
+    JLabel l46= new JLabel("Roll No.");
+    l46.setBounds(80,260,200,30);
+    l46.setForeground(Color.blue);
+    f5.add(l46);
+ 
+    JLabel l47= new JLabel("Email-Id");
+    l47.setBounds(80,300,200,30);
+    l47.setForeground(Color.blue);
+    f5.add(l47);
+ 
+    JLabel l48= new JLabel("Mobile No.");
+    l48.setBounds(80,340,200,30);
+    l48.setForeground(Color.blue);
+    f5.add(l48);
+ 
+    JLabel l49= new JLabel("Date of Issue");
+    l49.setBounds(80,380,200,30);
+    l49.setForeground(Color.blue);
+    f5.add(l49);
+ 
+    JLabel l50 =new JLabel("Expected Date*");
+    l50.setBounds(80,420,200,30);
+    l50.setForeground(Color.blue);
+    f5.add(l50);
+ 
+    jcb= new JComboBox();
+    jcb.setBounds(160,85,200,30);
+    jcb.setBackground(Color.white);
+    f3.add(jcb);
+ 
+    jcb1= new JComboBox();
+    jcb1.setBounds(160,40,200,30);
+    jcb1.setBackground(Color.white);
+    JcbHandler sv=new JcbHandler();
+    jcb1.addItemListener(sv);
+    f2.add(jcb1);
+ 
+    jcb2= new JComboBox();
+    jcb2.setBounds(160,85,200,30);
+    jcb2.setBackground(Color.white);
+    jcb2.addItem("Select");
+    f2.add(jcb2);
+ 
+    jcb3= new JComboBox();
+    jcb3.setBounds(160,40,200,30);
+    jcb3.setBackground(Color.white);
+    f7.add(jcb3);
+    Jcb3Handler jcbh =new Jcb3Handler();
+    jcb3.addItemListener(jcbh);
+ 
+    jcb4=new JComboBox();
+    jcb4.setBounds(200,50,200,30);
+    jcb4.setBackground(Color.white);
+    Jcb4Handler sv1=new Jcb4Handler();
+    jcb4.addItemListener(sv1);
+    f4.add(jcb4);
+ 
+    jcb5=new JComboBox();
+    jcb5.setBounds(200,90,200,30);
+    jcb5.setBackground(Color.white);
+    jcb5.addItem("Select");
+    f4.add(jcb5);
+    RefHandler reh =new RefHandler();
+    jcb5.addItemListener(reh);
+ 
+    jcb6=new JComboBox();
+    jcb6.setBounds(200,130,200,30);
+    jcb6.setBackground(Color.white);
+    jcb6.addItem("Select");
+    f4.add(jcb6);
+ 
+    jcb7= new JComboBox();
+    jcb7.setBounds(160,90,200,30);
+    jcb7.setBackground(Color.white);
+    jcb7.addItem("Select");
+    f7.add(jcb7);
+    Jcb8Handler sv2=new Jcb8Handler();
+    jcb7.addItemListener(sv2);
+ 
+    jcb8= new JComboBox();
+    jcb8.setBounds(160,140,200,30);
+    jcb8.setBackground(Color.white);
+    jcb8.addItem("Select");
+    f7.add(jcb8);
+    Jcb9Handler sv3=new Jcb9Handler();
+    jcb8.addItemListener(sv3);
+ 
+    jcb9= new JComboBox();
+    jcb9.setBounds(160,190,200,30);
+    jcb9.setBackground(Color.white);
+    jcb9.addItem("Select");
+    f7.add(jcb9);
+  
+    jcb10= new JComboBox();
+    jcb10.setBounds(200,50,200,30);
+    jcb10.setBackground(Color.WHITE);
+    Jcb10Handler svjcb10=new Jcb10Handler();
+    jcb10.addItemListener(svjcb10);
+    f5.add(jcb10);
+  
+    jcb11= new JComboBox();
+    jcb11.setBounds(200,90,200,30);
+    jcb11.setBackground(Color.WHITE);
+    Ref2Handler svjcb11=new Ref2Handler();
+    jcb11.addItemListener(svjcb11);
+    f5.add(jcb11);
+
+    jcb12= new JComboBox();
+    jcb12.setBounds(200,130,200,30);
+    jcb12.setBackground(Color.WHITE);
+    f5.add(jcb12);
+    Ref3Handler svjcb12=new Ref3Handler();
+    jcb12.addItemListener(svjcb12);
+ 
+   /* JCheckBox cbo= new JCheckBox("LMAO");
+    jcb4.addItem(cbo);
+    */
+    f1.add(menubar);
+ 
+      f.setVisible(true);
+  }
+ 
+      private static class LoginHandler implements ActionListener
+   {
+     @SuppressWarnings("deprecation")
+    public void actionPerformed(ActionEvent e)
+     {
+       String ramu =e.getActionCommand();
+       if(ramu.equalsIgnoreCase("Login")) 
+       {
+          if ((jt.getText().equals("")) && (jp.getText().equals("")))
+         { f.setVisible(false);
+          f1.setVisible(true);
+       }
+         else
+         {
+           JOptionPane.showMessageDialog(null,"Invalid User ID or Password");
+           }
+       }
+     }
+    }
+ 
+      private static class UserHandler extends KeyAdapter
+   {
+     public void keyPressed(KeyEvent e)
+     {
+        if(( e.getKeyCode()>0) &(flag==0))
+        {
+          jt.setText("");
+          flag=1;
+     
+        }  
+     }
+   }
+
+      private static class PassHandler extends KeyAdapter
+   {
+     public void keyPressed(KeyEvent e)
+     {
+        if(( e.getKeyCode()>0) &(flag1==0))
+        {
+          jp.setText("");
+          flag1=1;
+     
+        }  
+     }
+   }
+
+     public static class PowerHandler implements ActionListener
+    {
+       public void actionPerformed(ActionEvent e)
+       {
+         String ra= e.getActionCommand();
+         if((ra.equalsIgnoreCase("Existing")))
+         {
+             try
+             {
+                 jcb1.removeAllItems();
+                 jcb1.addItem("Select");
+                 CallConn cjcb1=new CallConn();
+                 Connection conjcb1=(Connection) cjcb1.call();
+                 String sqljcb1="select * from category";
+                 PreparedStatement pstjcb1=(PreparedStatement) conjcb1.prepareStatement(sqljcb1);
+                 ResultSet rsjcb1=(ResultSet) pstjcb1.executeQuery();
+                 while(rsjcb1.next())
+                 {
+                     jcb1.addItem(rsjcb1.getString("Category"));
+                 }
+            
+             }
+             catch(Exception ejcb1)
+             {
+                 ejcb1.printStackTrace();
+                 JOptionPane.showMessageDialog(null,"There is some error. Contact Atharva or Parth.");
+             }
+            f2.setVisible(true);
+            jcb1.setSelectedItem("Select");
+            jcb2.setSelectedItem("Select");
+            jt4.setText("");
+            jt5.setText("");
+            jt25.setText("");
+            jt27.setText("");
+       
+         }
+        }
+        }
+ 
+     public static class PowerHandler2 implements ActionListener
+     {
+        public void actionPerformed(ActionEvent e)
+        {
+          String ra= e.getActionCommand();
+          if((ra.equalsIgnoreCase("Issue")))
+          {
+              try
+               {
+                   jcb4.removeAllItems();
+                   jcb4.addItem("Select");
+                   jcb5.addItem("Select");
+                   jcb6.addItem("Select");
+                   CallConn cjcb4=new CallConn();
+                   Connection conjcb4=(Connection) cjcb4.call();
+                   String sqljcb4="select * from category";
+                   PreparedStatement pstjcb4=(PreparedStatement) conjcb4.prepareStatement(sqljcb4);
+                   ResultSet rsjcb4=(ResultSet) pstjcb4.executeQuery();
+                   while(rsjcb4.next())
+                   {
+                       jcb4.addItem(rsjcb4.getString("Category"));
+                   }
+              
+               }
+               catch(Exception ejcb4)
+               {
+                   ejcb4.printStackTrace();
+                   JOptionPane.showMessageDialog(null,"There is some error. Contact Atharva or Parth.");
+               }
+              f4.setVisible(true);
+              jcb4.setSelectedIndex(0);
+              jcb5.removeAllItems();
+              jcb6.removeAllItems();
+              jt12.setText("");
+              jt13.setText("");
+              jt14.setText("");
+              jt15.setText("");
+              jt16.setText("");
+              jt17.setText("");
+          }
+        }
+      }
+      public static class PowerHandler1 implements ActionListener
+    {
+       public void actionPerformed(ActionEvent e)
+       {
+         String ra= e.getActionCommand();
+         if((ra.equalsIgnoreCase("Add New")))
+         {
+            try
+            {
+                jcb.removeAllItems();
+                jcb.addItem("Select");
+                CallConn cjcb=new CallConn();
+                Connection conjcb=(Connection) cjcb.call();
+                String sqljcb="select * from category";
+                PreparedStatement pstjcb=(PreparedStatement) conjcb.prepareStatement(sqljcb);
+                ResultSet rsjcb=(ResultSet) pstjcb.executeQuery();
+                while(rsjcb.next())
+                {
+                    jcb.addItem(rsjcb.getString("Category"));
+                }
+           
+            }
+            catch(Exception ejcb)
+            {
+                ejcb.printStackTrace();
+                JOptionPane.showMessageDialog(null,"There is some error. Contact Atharva or Parth.");
+            }
+            f3.setVisible(true);
+            jt1.setText("");
+            jt2.setText("");
+            jt3.setText("");
+            jcb.setSelectedItem("Select");
+            jt24.setText("");
+            jt26.setText("");
+          }
+        }
+        }
+ 
+ 
+ 
+      public static class PowerHandler3 implements ActionListener
+      {
+         public void actionPerformed(ActionEvent e)
+         {
+           String ra= e.getActionCommand();
+           if((ra.equalsIgnoreCase("Submit")))
+           {
+              f5.setVisible(true);
+              jcb10.removeAllItems();
+              jcb10.addItem("Select");
+              jcb11.removeAllItems();
+              jcb12.removeAllItems();
+              jcb11.addItem("Select");
+              jcb12.addItem("Select");
+              jt32.setEditable(false);
+              jt33.setEditable(false);
+              jt34.setEditable(false);
+              jt35.setEditable(false);
+              jt36.setEditable(false);
+              jt37.setEditable(false);
+              try
+              {
+                  CallConn cjcb10=new CallConn();
+                  Connection conjcb10= (Connection) cjcb10.call();
+                  String sqljcb10="select * from category";
+                  PreparedStatement pstjcb10=(PreparedStatement) conjcb10.prepareStatement(sqljcb10);
+                  ResultSet rsjcb10=(ResultSet) pstjcb10.executeQuery();
+                  while(rsjcb10.next())
+                  {
+                      jcb10.addItem(rsjcb10.getString("Category"));
+                  }
+              }
+              catch (Exception e2)
+              {
+                  e2.printStackTrace();
+              }
+            }
+          }
+        }
+      public static class DateHandler extends KeyAdapter
+   {
+     public void keyPressed(KeyEvent e)
+     {
+        if(( e.getKeyCode()>0) &(ddmmyyyy==0))
+        {
+          jt2.setText("");
+          ddmmyyyy=1;
+     
+        }  
+     }
+   }
+      public static class MHandler implements ActionListener
+      {
+          public void actionPerformed(ActionEvent e)
+          {
+              String moh=e.getActionCommand();
+              if (moh.equalsIgnoreCase("Model/Reference"))
+              {
+                  try
+                    {
+                        jcb3.removeAllItems();
+                        jcb3.addItem("Select");
+                        CallConn cjcb3=new CallConn();
+                        Connection conjcb3=(Connection) cjcb3.call();
+                        String sqljcb3="select * from category";
+                        PreparedStatement pstjcb3=(PreparedStatement) conjcb3.prepareStatement(sqljcb3);
+                        ResultSet rsjcb3=(ResultSet) pstjcb3.executeQuery();
+                        while(rsjcb3.next())
+                        {
+                            jcb3.addItem(rsjcb3.getString("Category"));
+                        }
+                   
+                    }
+                    catch(Exception ejcb3)
+                    {
+                        ejcb3.printStackTrace();
+                        JOptionPane.showMessageDialog(null,"There is some error. Contact Atharva or Parth.");
+                    }
+                  jcb3.setSelectedItem("Select");
+                  jcb7.setSelectedItem("Select");
+                  jcb8.setSelectedItem("Select");
+                  jcb9.setSelectedItem("Select");
+                  f7.setVisible(true);
+              }
+                 
+          }
+      }
+    public static class SaveHandler implements ActionListener
+     {
+       public void actionPerformed(ActionEvent e)
+       {
+         String nil= e.getActionCommand();
+         if (nil.equalsIgnoreCase("Save"))
+         {
+              JOptionPane.showMessageDialog(null,"Please make sure you have added model number and refrence number");
+            try
+            {
+                CallConn c=new CallConn();
+                Connection conn=(Connection) c.call();
+                String category=(String) jcb.getSelectedItem();
+                String name=jt1.getText();
+                int quantity=Integer.parseInt(jt3.getText());
+                String date=jt2.getText();
+                String company=jt26.getText();
+                String po=jt20.getText();
+                String price=jt8.getText();
+                String modelno=jt24.getText();
+                String sql="select * from list where NameOfItem=? and Category=?";
+                PreparedStatement pst=(PreparedStatement) conn.prepareStatement(sql);
+                pst.setString(1, name);
+                pst.setString(2, category);
+                ResultSet rs=(ResultSet) pst.executeQuery();
+                if(rs.next())
+                {
+                    JOptionPane.showMessageDialog(null,"This item already exists ! Update its stock instead of adding new item !");
+                    jt1.setText("");
+                    jt2.setText("");
+                    jt3.setText("");
+                    jt24.setText("");
+                    jt26.setText("");
+                    jt20.setText("");
+                    jt8.setText("");
+                    jcb.setSelectedItem("Select");
+                }
+                else
+                {
+                    String sql1="insert into purchase(Category,NameOfItem,Quantity,Date,Company,PO,Price) values('"+category+"','"+name+"','"+quantity+"','"+date+"','"+company+"','"+po+"','"+price+"')";
+                    String sql2="insert into list(Category,NameOfItem,ModelNo,Company) values('"+category+"','"+name+"','"+modelno+"','"+company+"')";
+                    String sql3="insert into stock(Category,NameOfItem,Stock) values('"+category+"','"+name+"','"+quantity+"')";
+                    Statement stmt= (Statement) conn.createStatement();
+                    stmt.executeUpdate(sql1);
+                    stmt.executeUpdate(sql2);
+                    stmt.executeUpdate(sql3);
+                    JOptionPane.showMessageDialog(null,"Data Saved successfully..!!");
+               
+                    jt1.setText("");
+                    jt2.setText("");
+                    jt3.setText("");
+                    jt24.setText("");
+                    jt26.setText("");
+                    jt20.setText("");
+                    jt8.setText("");
+                    jcb.setSelectedItem("Select");
+                }
+            }
+            catch(Exception e1)
+            {
+                e1.printStackTrace();
+                JOptionPane.showMessageDialog(null,"All fields are mandatory...!!");
+                jt1.setText("");
+                jt2.setText("");
+                jt3.setText("");
+                jt24.setText("");
+                jt26.setText("");
+                jt20.setText("");
+                jt8.setText("");
+                jcb.setSelectedItem("Select");
+            }
+           }
+        }
+        }
+     public static class CancelHandler implements ActionListener
+     {
+       public void actionPerformed(ActionEvent e)
+       {
+        String jik= e.getActionCommand();
+        if (jik.equalsIgnoreCase("Cancel"))
+        {
+           f3.setVisible(false);
+           jt24.setText("");
+           jt26.setText("");
+        }
+        }
+        }
+   
+        public static class Save1Handler implements ActionListener
+     {
+       public void actionPerformed(ActionEvent e)
+       {
+         String nil1= e.getActionCommand();
+         if (nil1.equalsIgnoreCase("Save "))
+         {
+             try
+             {
+                 CallConn c1=new CallConn();
+                 Connection conn1=(Connection) c1.call();
+            
+                 String category=(String) jcb1.getSelectedItem();
+                 String name=(String) jcb2.getSelectedItem();
+                int quantity=Integer.parseInt(jt5.getText());
+                String date=jt4.getText();
+                String po=jt25.getText();
+                String company=jt21.getText();
+                String price=jt9.getText();
+                String sql4="select * from list where NameOfItem=? and Category=?";
+                PreparedStatement pst=(PreparedStatement) conn1.prepareStatement(sql4);
+                pst.setString(1, name);
+                pst.setString(2, category);
+                ResultSet rs=(ResultSet) pst.executeQuery();
+           
+                if(rs.next())
+                {
+                    String sql5="insert into purchase(Category,NameOfItem,Quantity,Date,Company,PO,Price) values('"+category+"','"+name+"','"+quantity+"','"+date+"','"+company+"','"+po+"','"+price+"')";
+                    Statement stmt= (Statement) conn1.createStatement();
+                    stmt.executeUpdate(sql5);
+               
+                    String sql6="select Stock from stock where NameOfItem=? and Category=?";
+                    PreparedStatement pst4=(PreparedStatement) conn1.prepareStatement(sql6);
+                    pst4.setString(1, name);
+                    pst4.setString(2, category);
+                    ResultSet rs2=(ResultSet) pst4.executeQuery();
+                    if(rs2.next())
+                    {
+                        int x=rs2.getInt("Stock");
+                        x = x + quantity;
+                        System.out.println(x);
+                        CallConn c=new CallConn();
+                        Connection conn7=(Connection) c.call();
+                        String sql7="Update stock SET Stock=? where Category=? and NameOfItem=?";
+                        PreparedStatement pst5=(PreparedStatement) conn7.prepareStatement(sql7);
+                        pst5.setString(3, name);
+                        pst5.setString(2, category);
+                        pst5.setInt(1, x);
+                        pst5.executeUpdate();
+                   
+                        JOptionPane.showMessageDialog(null, "Stock updated successfully !");
+                        jcb1.setSelectedIndex(0);
+                        jcb2.setSelectedIndex(0);
+                        jt5.setText(null);
+                        jt25.setText(null);
+                        jt4.setText(null);
+                        jt27.setText(null);
+                        jt21.setText(null);
+                        jt9.setText(null);
+                    }
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null,"This item does not exist ! Please add the item first from the add new option !");
+                }
+             }
+             catch(Exception ex)
+             {
+                 jcb1.setSelectedIndex(0);
+                 jcb2.setSelectedIndex(0);
+                 jt5.setText(null);
+                 jt25.setText(null);
+                 jt4.setText(null);
+                 jt27.setText(null);
+                 jt21.setText(null);
+                 jt9.setText(null);
+                 ex.printStackTrace();
+                 JOptionPane.showMessageDialog(null,"Stock Updation Failed. Try again..!!");
+             }
+      
+         }
+        }
+        }
+     public static class Cancel1Handler implements ActionListener
+     {
+       public void actionPerformed(ActionEvent e)
+       {
+        String jik1= e.getActionCommand();
+        if (jik1.equalsIgnoreCase("Cancel "))
+        {
+          f2.setVisible(false);
+     
+        }
+        }
+        }
+ 
+     public static class JcbHandler implements ItemListener
+     {
+       public void itemStateChanged(ItemEvent e)
+       {
+              jcb2.removeAllItems();
+              this.select();
+       }
+       public void select()
+       {
+           try
+           {
+             CallConn c5=new CallConn();
+             Connection conn5=(Connection) c5.call();
+             String sql8="select NameOfItem from list where Category=? ";
+        
+             PreparedStatement stmt1= (PreparedStatement) conn5.prepareStatement(sql8);
+             stmt1.setString(1,(String)jcb1.getSelectedItem());
+        
+             ResultSet rs1=(ResultSet) stmt1.executeQuery();
+             jcb2.addItem("Select");
+             while(rs1.next())
+               {
+                 String em= rs1.getString("NameOfItem");                
+                 jcb2.addItem(em);
+               }
+           }
+            catch(Exception e1)
+            {
+                 JOptionPane.showMessageDialog(null,"Connection Failed");
+            }
+       }
+      }
+     public static class modelbutton implements ActionListener
+      {
+            public void actionPerformed(ActionEvent e)
+            {
+                String parth = e.getActionCommand();
+                if (parth.equalsIgnoreCase("Add Reference and Serial No."))
+                {
+                    try
+                    {
+                        CallConn c=new CallConn();
+                        Connection conn=(Connection) c.call();
+                        String category=(String) jcb.getSelectedItem();
+                        String name=jt1.getText();
+                        String sql="select * from list where NameOfItem=? and Category=?";
+                        PreparedStatement pst=(PreparedStatement) conn.prepareStatement(sql);
+                        pst.setString(1, name);
+                        pst.setString(2, category);
+                        ResultSet rs=(ResultSet) pst.executeQuery();
+                        if(rs.next())
+                        {
+                            JOptionPane.showMessageDialog(null,"This item already exists ! Go to Serial/Reference to add Seial and reference No.");
+                            jt1.setText("");
+                            jt2.setText("");
+                            jt3.setText("");
+                            jt8.setText("");
+                            jt24.setText("");
+                            jt26.setText("");
+                            jt20.setText("");
+                            jcb.setSelectedItem("Select");
+                        }
+                        else if (jt1.getText().equalsIgnoreCase("")|| jt2.getText().equalsIgnoreCase("")|| jt3.getText().equalsIgnoreCase("") || jt20.getText().equalsIgnoreCase("") || jt24.getText().equalsIgnoreCase("") || jcb.getSelectedIndex()==0 || jt26.getText().equalsIgnoreCase("") )
+                        {
+                            JOptionPane.showMessageDialog(null,"All fields Except Price are Mandatory");
+                        }
+                        else
+                        {
+                            f3.setVisible(false);
+                            f6.setVisible(true);
+                        }
+                    }
+                    catch(Exception e1)
+                    {
+                         JOptionPane.showMessageDialog(null,"Connection Failed");
+                    }
+                }
+            }
+        }
+         public static class modelbutton1 implements ActionListener
+         {
+       
+            public void actionPerformed(ActionEvent e)
+            {
+                String parth1 = e.getActionCommand();
+                if (parth1.equalsIgnoreCase("Add"))
+                {
+                    if(jt22.getText().contentEquals("") || jt23.getText().contentEquals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "All fields are mandatory ! Please make sure that you have entered all details properly !");
+                    }
+                    else
+                    {
+                        CallConn c234=new CallConn();
+                        Connection connnn=(Connection) c234.call();
+                        try
+                        {
+                            String sqlm="select * from C_M_R_S where ReferenceNo=?";
+                            PreparedStatement pstx=(PreparedStatement) connnn.prepareStatement(sqlm);
+                            pstx.setString(1, jt23.getText());
+                            ResultSet r999=(ResultSet) pstx.executeQuery();
+                            if(r999.next())
+                            {
+                                JOptionPane.showMessageDialog(null, "Reference number possess unique value..! It cannot be duplicated.");
+                                jt23.setText("");
+                            }
+                            else
+                            {
+                                CallConn cx=new CallConn();
+                                Connection connx=(Connection) cx.call();
+                                String rn=jt23.getText();
+                                String mn=jt26.getText();
+                                try
+                                {
+                                    String sqlx = "insert into C_M_R_S(Company,ReferenceNo,SerialNo,NameOfItem,Category,ModelNo) values(?,?,?,?,?,?)";
+                                    PreparedStatement pst=(PreparedStatement) connx.prepareStatement(sqlx);
+                                    pst.setString(1, mn);
+                                    pst.setString(2, rn);
+                                    pst.setString(3, jt22.getText());
+                                    pst.setString(4, jt1.getText());
+                                    pst.setString(5, (String) jcb.getSelectedItem());
+                                    pst.setString(6, jt24.getText());
+                                    pst.executeUpdate();
+                                     jt22.setText("");
+                                    jt23.setText("");
+                                }
+                                catch(Exception e1)
+                                {
+                                    e1.printStackTrace();
+                                }
+                            }
+                        }
+                        catch (SQLException e2)
+                        {
+                            e2.printStackTrace();
+                            JOptionPane.showMessageDialog(null, "Data insertion failed...Try Again");
+                        }
+                   
+                    }
+                }
+            }
+         }
+ 
+         public static class modelbutton2 implements ActionListener
+         {
+            public void actionPerformed(ActionEvent e)
+            {
+                String parth2 = e.getActionCommand();
+                if (parth2.equalsIgnoreCase("Finish"))
+                {
+                    jt22.setText("");
+                    jt23.setText("");
+                    f3.setVisible(true);
+                    f6.setVisible(false);
+                }
+            }
+            }
+         public static class f7cancel implements ActionListener
+         {
+             public void actionPerformed(ActionEvent e)
+             {
+                 String dabbu= e.getActionCommand();
+                 if (dabbu.equalsIgnoreCase("Cancel  "))
+                 {
+                     f7.setVisible(false);
+                 }
+             }
+         }
+          public static class Jcb4Handler implements ItemListener
+         {
+           public void itemStateChanged(ItemEvent e)
+           {
+                  jcb5.removeAllItems();
+                  this.select();
+           }
+           public void select()
+           {
+               if (jcb5.getSelectedIndex()!=0)
+               {
+               try
+               {
+                 jcb5.addItem("Select");
+                 CallConn c5=new CallConn();
+                 Connection conn5=(Connection) c5.call();
+                 String sql8="select NameOfItem from list where Category=? ";
+            
+                 PreparedStatement stmt1= (PreparedStatement) conn5.prepareStatement(sql8);
+                 stmt1.setString(1,(String)jcb4.getSelectedItem());
+            
+                 ResultSet rs1=(ResultSet) stmt1.executeQuery();
+                 while(rs1.next())
+                   {
+                     String em= rs1.getString("NameOfItem");                
+                     jcb5.addItem(em);
+                   }
+               }
+                catch(Exception e1)
+                {
+                     JOptionPane.showMessageDialog(null,"Please Reselect Category");
+                }
+           }
+           }
+          }
+         
+          public static class Jcb10Handler implements ItemListener
+          {
+            public void itemStateChanged(ItemEvent e)
+            {
+                   jcb11.removeAllItems();
+                   this.select();
+            }
+            public void select()
+            {
+                if (jcb11.getSelectedIndex()!=0)
+                {
+                try
+                {
+                  jcb11.addItem("Select");
+                  CallConn cjcb11=new CallConn();
+                  Connection conjcb11=(Connection) cjcb11.call();
+                  String sqljcb11="select NameOfItem from list where Category=? ";
+             
+                  PreparedStatement stmtjcb11= (PreparedStatement) conjcb11.prepareStatement(sqljcb11);
+                  stmtjcb11.setString(1,(String)jcb10.getSelectedItem());
+             
+                  ResultSet rsjcb11=(ResultSet) stmtjcb11.executeQuery();
+                  while(rsjcb11.next())
+                    {
+                      String em= rsjcb11.getString("NameOfItem");                
+                      jcb11.addItem(em);
+                    }
+                }
+                 catch(Exception e1)
+                 {
+                      JOptionPane.showMessageDialog(null,"Please Reselect Category");
+                 }
+            }
+            }
+           }
+
+
+         public static class issuecancel implements ActionListener
+         {
+             public void actionPerformed(ActionEvent e)
+             {
+                 String dabbu1= e.getActionCommand();
+                 if (dabbu1.equalsIgnoreCase("Cancel"))
+                 {
+                     f4.setVisible(false);
+                
+                 }
+             }
+         }
+         public static class RefHandler implements ItemListener
+        {
+        public void itemStateChanged(ItemEvent e)
+          {
+                 jcb6.removeAllItems();
+                 this.select();
+          }
+          public void select()
+          {
+              if (jcb6.getSelectedIndex()!=0)
+              {
+              try
+              {
+                boolean vail=true;
+                CallConn c5=new CallConn();
+                Connection conn5=(Connection) c5.call();
+                String sql8="select ReferenceNo from c_m_r_s where NameOfItem=? and Available=?";
+           
+                PreparedStatement stmt1= (PreparedStatement) conn5.prepareStatement(sql8);
+                stmt1.setString(1,(String)jcb5.getSelectedItem());
+                stmt1.setBoolean(2, vail);
+           
+                ResultSet rs1=(ResultSet) stmt1.executeQuery();
+                jcb6.addItem("Select");
+                while(rs1.next())
+                  {
+                    String em= rs1.getString("ReferenceNo");
+                    jcb6.addItem(em);
+                  }
+              }
+               catch(Exception e1)
+               {
+                    JOptionPane.showMessageDialog(null,"There is Some Error! Please fill the details agian");
+               }
+          }
+          }
+         }
+        
+         public static class Ref2Handler implements ItemListener
+         {
+         public void itemStateChanged(ItemEvent e)
+           {
+                  jcb12.removeAllItems();
+                  this.select();
+           }
+           public void select()
+           {
+               if (jcb12.getSelectedIndex()!=0)
+               {
+               try
+               {
+                 boolean vail2=false;
+                 CallConn cjcb12=new CallConn();
+                 Connection conjcb12=(Connection) cjcb12.call();
+                 
+                 String sqljcb12="select ReferenceNo from c_m_r_s where NameOfItem=? and Available=?";
+                 
+                 PreparedStatement stmtjcb12= (PreparedStatement) conjcb12.prepareStatement(sqljcb12);
+                 
+                 stmtjcb12.setString(1,(String)jcb11.getSelectedItem());
+                 stmtjcb12.setBoolean(2, vail2);
+                 
+                 ResultSet rsjcb12=(ResultSet) stmtjcb12.executeQuery();
+                 jcb12.addItem("Select");
+                 while(rsjcb12.next())
+                   {
+                     String em= rsjcb12.getString("ReferenceNo");
+                     jcb12.addItem(em);
+                   }
+                 
+                 conjcb12.close();
+               }
+                 catch(Exception e1)
+                 {
+                      JOptionPane.showMessageDialog(null,"There is Some Error! Please fill the details agian");
+                 }
+               }
+           }
+         }
+        public static class modelbutton3 implements ActionListener
+          {
+                public void actionPerformed(ActionEvent e)
+                {
+                    String parth = e.getActionCommand();
+                    if (parth.equalsIgnoreCase("Add Reference and Serial Number"))
+                    {
+                         if (jt4.getText().equalsIgnoreCase("")|| jt5.getText().equalsIgnoreCase("")|| jt25.getText().equalsIgnoreCase("")|| jcb1.getSelectedIndex()==0 || jcb2.getSelectedIndex()==0 )
+                            {
+                                JOptionPane.showMessageDialog(null,"All fields Except Company are Mandatory");
+                            }
+                            else
+                            {
+                                f2.setVisible(false);
+                                f8.setVisible(true);
+                            }
+                        }
+                }
+        }
+        public static class modelbutton4 implements ActionListener
+         {
+            public void actionPerformed(ActionEvent e)
+            {
+                String parth2 = e.getActionCommand();
+                if (parth2.equalsIgnoreCase("Finish"))
+                {
+                    jt28.setText("");
+                    jt29.setText("");
+                    f2.setVisible(true);
+                    f8.setVisible(false);
+               
+                }
+            }
+        }
+        public static class modelbutton5 implements ActionListener
+         {
+       
+            public void actionPerformed(ActionEvent e)
+            {
+                String parth1 = e.getActionCommand();
+                if (parth1.equalsIgnoreCase("Add"))
+                {
+                    if(jt28.getText().contentEquals("") || jt29.getText().contentEquals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "All fields are mandatory ! Please make sure that you have entered all details properly !");
+                    }
+                    else
+                    {
+                        CallConn c234=new CallConn();
+                        Connection connnn=(Connection) c234.call();
+                        try
+                        {
+                            String sqlm="select * from C_M_R_S where ReferenceNo=?";
+                            PreparedStatement pstx=(PreparedStatement) connnn.prepareStatement(sqlm);
+                            pstx.setString(1, jt29.getText());
+                            ResultSet r999=(ResultSet) pstx.executeQuery();
+                            if(r999.next())
+                            {
+                                JOptionPane.showMessageDialog(null, "Reference number possess unique value..! It cannot be duplicated.");
+                                jt29.setText("");
+                            }
+                            else
+                            {
+                                CallConn cx=new CallConn();
+                                Connection connx=(Connection) cx.call();
+                                String rn=jt29.getText();
+                                String mn=jt27.getText();
+                                try
+                                {
+                                    String sqlx = "insert into C_M_R_S(Company,ReferenceNo,SerialNo,NameOfItem,Category,ModelNo) values(?,?,?,?,?,?)";
+                                    PreparedStatement pst=(PreparedStatement) connx.prepareStatement(sqlx);
+                                    pst.setString(1, mn);
+                                    pst.setString(2, rn);
+                                    pst.setString(3, jt28.getText());
+                                    pst.setString(4, (String) jcb2.getSelectedItem());
+                                    pst.setString(5, (String) jcb1.getSelectedItem());
+                                    pst.setString(6, jt25.getText());
+                                    pst.executeUpdate();
+                                     jt28.setText("");
+                                    jt29.setText("");
+                                }
+                                catch(Exception e1)
+                                {
+                                    e1.printStackTrace();
+                                }
+                            }
+                        }
+                        catch (SQLException e2)
+                        {
+                            e2.printStackTrace();
+                            JOptionPane.showMessageDialog(null, "Data insertion failed...Try Again");
+                        }
+                   
+                    }
+                }
+            }
+         }
+         public static class Jcb3Handler implements ItemListener
+         {
+           public void itemStateChanged(ItemEvent e)
+           {
+                  jcb7.removeAllItems();
+                  this.select();
+           }
+           public void select()
+           {
+               try
+               {
+                 CallConn c5=new CallConn();
+                 Connection conn5=(Connection) c5.call();
+                 String sql8="select NameOfItem from list where Category=? ";
+            
+                 PreparedStatement stmt1= (PreparedStatement) conn5.prepareStatement(sql8);
+                 stmt1.setString(1,(String)jcb3.getSelectedItem());
+            
+                 ResultSet rs1=(ResultSet) stmt1.executeQuery();
+                 jcb7.addItem("Select");
+                 while(rs1.next())
+                   {
+                     String em= rs1.getString("NameOfItem");                
+                     jcb7.addItem(em);
+                   }
+               }
+                catch(Exception e1)
+                {
+                     JOptionPane.showMessageDialog(null,"Connection Failed");
+                }
+           }
+          }
+         public static class modelbutton6 implements ActionListener
+              {
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        String parth = e.getActionCommand();
+                        if (parth.equalsIgnoreCase("Add Reference and Serial Number"))
+                        {
+                             if (jcb8.getSelectedIndex()==0|| jcb9.getSelectedIndex()==0|| jcb3.getSelectedIndex()==0 || jcb7.getSelectedIndex()==0 )
+                                {
+                                    JOptionPane.showMessageDialog(null,"All fields re Mandatory");
+                                }
+                                else
+                                {
+                                    f7.setVisible(false);
+                                    f9.setVisible(true);
+                                }
+                            }
+                    }
+            }
+         public static class modelbutton7 implements ActionListener
+             {
+           
+                public void actionPerformed(ActionEvent e)
+                {
+                    String parth1 = e.getActionCommand();
+                    if (parth1.equalsIgnoreCase("Add"))
+                    {
+                        if(jt30.getText().contentEquals("") || jt31.getText().contentEquals(""))
+                        {
+                            JOptionPane.showMessageDialog(null, "All fields are mandatory ! Please make sure that you have entered all details properly !");
+                        }
+                        else
+                        {
+                            CallConn c234=new CallConn();
+                            Connection connnn=(Connection) c234.call();
+                            try
+                            {
+                                String sqlm="select * from C_M_R_S where ReferenceNo=?";
+                                PreparedStatement pstx=(PreparedStatement) connnn.prepareStatement(sqlm);
+                                pstx.setString(1, jt31.getText());
+                                ResultSet r999=(ResultSet) pstx.executeQuery();
+                                if(r999.next())
+                                {
+                                    JOptionPane.showMessageDialog(null, "Reference number possess unique value..! It cannot be duplicated.");
+                                    jt31.setText("");
+                                }
+                                else
+                                {
+                                    CallConn cx=new CallConn();
+                                    Connection connx=(Connection) cx.call();
+                                    String rn=jt31.getText();
+                                    String mn=jt21.getText();
+                                    try
+                                    {
+                                        String sqlx = "insert into C_M_R_S(Company,ReferenceNo,SerialNo,NameOfItem,Category,ModelNo) values(?,?,?,?,?,?)";
+                                        PreparedStatement pst=(PreparedStatement) connx.prepareStatement(sqlx);
+                                        pst.setString(1, mn);
+                                        pst.setString(2, rn);
+                                        pst.setString(3, jt30.getText());
+                                        pst.setString(4, (String) jcb7.getSelectedItem());
+                                        pst.setString(5, (String) jcb3.getSelectedItem());
+                                        pst.setString(6, jt20.getText());
+                                        pst.executeUpdate();
+                                         jt30.setText("");
+                                        jt31.setText("");
+                                    }
+                                    catch(Exception e1)
+                                    {
+                                        e1.printStackTrace();
+                                    }
+                                }
+                            }
+                            catch (SQLException e2)
+                            {
+                                e2.printStackTrace();
+                                JOptionPane.showMessageDialog(null, "Data insertion failed...Try Again");
+                            }
+                       
+                        }
+                    }
+                }
+             }
+         public static class modelbutton8 implements ActionListener
+             {
+                public void actionPerformed(ActionEvent e)
+                {
+                    String parth2 = e.getActionCommand();
+                    if (parth2.equalsIgnoreCase("Finish"))
+                    {
+                        jt30.setText("");
+                        jt31.setText("");
+                        f7.setVisible(true);
+                        f9.setVisible(false);
+                   
+                    }
+                }
+            }
+     
+         public static class modelbutton9 implements ActionListener
+         {
+            public void actionPerformed(ActionEvent e)
+            {
+                String add=e.getActionCommand();
+                if (add.equalsIgnoreCase("+"))
+                {
+                    jt19.setText("");
+                    f10.setVisible(true);
+                    f3.setVisible(false);
+                }
+            }
+         
+         }
+     
+         public static class modelbutton10 implements ActionListener
+         {
+            public void actionPerformed(ActionEvent e)
+            {
+                String addxxx=e.getActionCommand();
+                if(addxxx.equalsIgnoreCase("add"))
+                {
+                    try
+                    {
+                        CallConn coxxx=new CallConn();
+                        Connection cis=(Connection) coxxx.call();
+                        String cat=jt19.getText();
+                        jcb.addItem(cat);
+                        String sqlcat="insert into category(category) values('"+cat+"')";
+                        Statement stmtcat= (Statement) cis.createStatement();
+                        stmtcat.executeUpdate(sqlcat);
+                        JOptionPane.showMessageDialog(null, "Category added successfully..!!");
+                        jt19.setText("");
+                    }
+                    catch (SQLException ecat)
+                    {
+                        ecat.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "Category insertion failed...!!Try again.");
+                        jt19.setText("");
+                    }
+                }
+            }
+         
+         }
+     
+         public static class modelbutton11 implements ActionListener
+         {
+            public void actionPerformed(ActionEvent e)
+            {
+                String fin=e.getActionCommand();
+                if(fin.equalsIgnoreCase("finish"))
+                {
+                    jcb.setSelectedItem("Select");
+                    f10.setVisible(false);
+                    f3.setVisible(true);
+                }
+            }
+         
+         }
+     
+         public static class Jcb8Handler implements ItemListener
+         {
+           public void itemStateChanged(ItemEvent e)
+           {
+                  jcb8.removeAllItems();
+                  this.select();
+           }
+           public void select()
+           {
+               try
+               {
+                 CallConn c5=new CallConn();
+                 Connection conn5=(Connection) c5.call();
+                 String sql8="select ModelNo from list where NameOfItem=? ";
+            
+                 PreparedStatement stmt1= (PreparedStatement) conn5.prepareStatement(sql8);
+                 stmt1.setString(1,(String)jcb7.getSelectedItem());
+            
+                 ResultSet rs1=(ResultSet) stmt1.executeQuery();
+                 jcb8.addItem("Select");
+                 while(rs1.next())
+                   {
+                     String em= rs1.getString("ModelNo");                
+                     jcb8.addItem(em);
+                   }
+               }
+                catch(Exception e1)
+                {
+                     JOptionPane.showMessageDialog(null,"Connection Failed");
+                }
+           }
+          }
+         public static class Jcb9Handler implements ItemListener
+         {
+           public void itemStateChanged(ItemEvent e)
+           {
+                  jcb9.removeAllItems();
+                  this.select();
+           }
+           public void select()
+           {
+               try
+               {
+                 CallConn c5=new CallConn();
+                 Connection conn5=(Connection) c5.call();
+                 String sql8="select Company from list where ModelNo=? ";
+                 PreparedStatement stmt1= (PreparedStatement) conn5.prepareStatement(sql8);
+                 stmt1.setString(1,(String)jcb8.getSelectedItem());
+            
+                 ResultSet rs1=(ResultSet) stmt1.executeQuery();
+                 jcb9.addItem("Select");
+                 while(rs1.next())
+                   {
+                     String em= rs1.getString("Company");                
+                     jcb9.addItem(em);
+                   }
+               }
+                catch(Exception e1)
+                {
+                     JOptionPane.showMessageDialog(null,"Connection Failed");
+                }
+           }
+          }
+         public static class issuemorehandler implements ActionListener
+         {
+             public void actionPerformed(ActionEvent e)
+             {
+                 String rs=e.getActionCommand();
+                 if (rs.equalsIgnoreCase("Issue More"))
+                 {
+                     String cate=(String) jcb4.getSelectedItem();
+                     String noi=(String) jcb5.getSelectedItem();
+                     String ref=(String) jcb6.getSelectedItem();
+                     String name=jt12.getText();
+                     String roll=jt13.getText();
+                     String email=jt14.getText();
+                     String mob=jt15.getText();
+                     String doi=jt16.getText();
+                     String pup=jt17.getText();
+                     boolean available=false;
+                     if (cate.contentEquals("Select") || noi.contentEquals("") || ref.contentEquals("") || name.contentEquals("") || roll.contentEquals("") || email.contentEquals("") || mob.contentEquals("") || doi.contentEquals(""))
+                     {
+                         JOptionPane.showMessageDialog(null,"All fields Except purpose are mandatory!");
+                     }
+                     else
+                     {
+                     try
+                         {
+                          CallConn c=new CallConn();
+                          Connection conniss=(Connection) c.call();
+                          String sqliss1 = "insert into itemtransaction(ReferenceNo,NameOfStudent,RollNo,EmailId,MobileNo,DOI,Purpose) values('"+ref+"','"+noi+"','"+roll+"','"+email+"','"+mob+"','"+doi+"','"+pup+"')";
+                          Statement stmtiss1=(Statement) conniss.createStatement();
+                          stmtiss1.executeUpdate(sqliss1);
+                          JOptionPane.showMessageDialog(null, "Item issued Successfully..!!");
+                          String sqliss2="update c_m_r_s set Available=? where ReferenceNo=?";
+                           PreparedStatement pst=(PreparedStatement) conniss.prepareStatement(sqliss2);
+                           pst.setBoolean(1, available);
+                           pst.setString(2, ref);
+                           pst.executeUpdate();
+                      
+                     jcb4.setSelectedIndex(0);
+                     jcb5.removeAllItems();
+                     jcb6.removeAllItems();
+                     jcb5.addItem("Select");
+                     jcb6.addItem("Select");
+                 }
+                 catch(Exception e1)
+                 {
+                     JOptionPane.showMessageDialog(null,"There is some error. Contact Atharva or Parth!");
+                 }
+                }
+
+                 }
+             }
+         }
+         public static class IssueHandler implements ActionListener
+         {
+           public void actionPerformed(ActionEvent e)
+           {
+             String nil= e.getActionCommand();
+             if (nil.equalsIgnoreCase("Issue"))
+             {
+                    String cate=(String) jcb4.getSelectedItem();
+                    String noi=(String) jcb5.getSelectedItem();
+                    String ref=(String) jcb6.getSelectedItem();
+                    String name=jt12.getText();
+                    String roll=jt13.getText();
+                    String email=jt14.getText();
+                    String mob=jt15.getText();
+                    String doi=jt16.getText();
+                    String pup=jt17.getText();
+                    boolean available=false;
+                    if (cate.contentEquals("Select") || noi.contentEquals("") || ref.contentEquals("") || name.contentEquals("") || roll.contentEquals("") || email.contentEquals("") || mob.contentEquals("") || doi.contentEquals(""))
+                    {
+                        JOptionPane.showMessageDialog(null,"All fields Except purpose are mandatory!");
+                    }
+                    else
+                    {
+                    try
+                        {
+                         CallConn c=new CallConn();
+                         Connection conniss=(Connection) c.call();
+                         String sqliss1 = "insert into itemtransaction(ReferenceNo,NameOfStudent,RollNo,EmailId,MobileNo,DOI,Purpose) values('"+ref+"','"+name+"','"+roll+"','"+email+"','"+mob+"','"+doi+"','"+pup+"')";
+                         Statement stmtiss1=(Statement) conniss.createStatement();
+                         stmtiss1.executeUpdate(sqliss1);
+                         JOptionPane.showMessageDialog(null, "Item issued Successfully..!!");
+                         String sqliss2="update c_m_r_s set Available=? where ReferenceNo=?";
+                          PreparedStatement pst=(PreparedStatement) conniss.prepareStatement(sqliss2);
+                          pst.setBoolean(1, available);
+                          pst.setString(2, ref);
+                          pst.executeUpdate();
+                     
+                    jcb4.setSelectedIndex(0);
+                    jcb5.removeAllItems();
+                    jcb6.removeAllItems();
+                    jcb5.addItem("Select");
+                    jcb6.addItem("Select");
+                    jt12.setText(null);
+                    jt13.setText(null);
+                    jt14.setText(null);
+                    jt15.setText(null);
+                    jt16.setText(null);
+                    jt17.setText(null);
+                }
+                catch(Exception e1)
+                {
+                    JOptionPane.showMessageDialog(null,"There is some error. Contact Atharva or Parth!");
+                }
+               }
+            }
+            }
+}
+         public static class SubmitHandler implements ActionListener
+         {
+           public void actionPerformed(ActionEvent e)
+           {
+               String jik= e.getActionCommand();
+               if(jik.equalsIgnoreCase("Submit"))
+               {
+                   try
+                   {
+                       boolean available=true;
+                       if (jcb10.getSelectedIndex()==0 || jcb11.getSelectedIndex()==0 || jcb12.getSelectedIndex()==0)
+                       {
+                           JOptionPane.showMessageDialog(null,"Enter the fields correctly");
+                       }
+                       else
+                       {
+                    	    boolean submit=true;
+                    	    String refg=(String) jcb12.getSelectedItem();
+                            CallConn c=new CallConn();
+                            Connection conniss=(Connection) c.call();
+                            String sqliss2="update c_m_r_s set Available=? where ReferenceNo=?";
+                            PreparedStatement pst=(PreparedStatement) conniss.prepareStatement(sqliss2);
+                            pst.setBoolean(1, submit);
+                            pst.setString(2, refg);
+                            pst.executeUpdate();
+                            JOptionPane.showMessageDialog(null,"Item Submited Successfully");
+                        
+                       jcb10.setSelectedIndex(0);
+                       jcb11.removeAllItems();
+                       jcb12.removeAllItems();
+                       jcb11.addItem("Select");
+                       jcb12.addItem("Select");
+                       jt32.setText(null);
+                       jt33.setText(null);
+                       jt34.setText(null);
+                       jt35.setText(null);
+                       jt36.setText(null);
+                       jt37.setText(null);
+                       }
+                   }
+                   catch (Exception esubmit)
+                   {
+                       esubmit.printStackTrace();
+                   }
+               }
+                   }
+         }
+       
+         public static class cancelsubHandler implements ActionListener
+         {
+           public void actionPerformed(ActionEvent e)
+           {
+               String jik= e.getActionCommand();	
+               if(jik.equalsIgnoreCase("Cancel "))
+               {
+                   f5.setVisible(false);
+                   jt32.setText(null);
+                   jt33.setText(null);
+                   jt34.setText(null);
+                   jt35.setText(null);
+                   jt36.setText(null);
+                   jt37.setText(null);
+               }
+           }
+         }
+         public static class Ref3Handler implements ItemListener
+         {
+         public void itemStateChanged(ItemEvent e)
+           {
+                  this.select();
+           }
+           public void select()
+           {
+               if (jcb12.getSelectedIndex()!=0)
+               {
+               try
+               {
+            	   CallConn cjcb12=new CallConn();
+                   Connection conjcb12=(Connection) cjcb12.call();
+               
+            	   String cate2 = (String) jcb10.getSelectedItem();
+                   String noi2 = (String) jcb11.getSelectedItem();
+                   String ref2 = (String) jcb12.getSelectedItem();
+                   Boolean mit = false;
+                   String sqlsubmit = "Select * from itemtransaction where ReferenceNo=? and Submit=?";
+                   PreparedStatement stmtjcb13= (PreparedStatement) conjcb12.prepareStatement(sqlsubmit);
+                   stmtjcb13.setString(1, ref2);
+                   stmtjcb13.setBoolean(2, mit);
+                   ResultSet rsjcb13=(ResultSet) stmtjcb13.executeQuery();
+                   while(rsjcb13.next())
+                   {
+                  	 jt32.setText(rsjcb13.getString("NameOfStudent"));
+                       jt33.setText(rsjcb13.getString("RollNo"));
+                       jt34.setText(rsjcb13.getString("EmailId"));
+                       jt35.setText(rsjcb13.getString("MobileNo"));
+                       jt36.setText(rsjcb13.getString("DOI"));
+                   }
+               }
+               catch (Exception esubmit)
+               {
+                   esubmit.printStackTrace();
+               }
+               }
+           }
+         }
+         
+}
